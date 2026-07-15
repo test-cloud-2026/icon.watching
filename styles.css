@@ -160,24 +160,24 @@
   display: none;
   position: absolute;
   z-index: 6;
-  width: 10px;
-  height: 14px;
-  border-radius: 60% 60% 40% 40% / 65% 65% 35% 35%;
-  background: linear-gradient(145deg, #eafcff, #57c8ea);
-  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, .8);
+  width: 15px;
+  height: 15px;
+  /* 角を1つだけ尖らせた「しずく」形(絵文字の💧に近いぷっくりした形)。 */
+  border-radius: 50% 50% 50% 4%;
+  background: linear-gradient(135deg, #d9f3ff, #4bb0e6);
+  box-shadow: inset -2px -2px 3px rgba(0, 60, 90, .12), inset 1px 1px 2px rgba(255, 255, 255, .85);
   opacity: 0;
-  transform-origin: top center;
 }
 
 #rwc-widget.rwc-rush .rwc-sweat {
   display: block;
 }
 
-/* マンガ・アニメの汗マーク定番の動き: できてしばらく留まり、最後に斜め下へ弾け飛んで消える。 */
-.rwc-sweat-1 { left: 28px; top: 36px; animation: rwc-flick-a 1.8s infinite; }
-.rwc-sweat-2 { left: 60px; top: 20px; animation: rwc-flick-b 2.1s .5s infinite; }
-.rwc-sweat-3 { right: 82px; top: 46px; animation: rwc-flick-a 1.9s .9s infinite; }
-.rwc-sweat-4 { left: 72px; top: 62px; animation: rwc-flick-b 2.2s 1.3s infinite; }
+/* 後頭部〜背中あたりの1点から、震えるような手描き線のように放射状へ弾け飛ぶ動き。 */
+.rwc-sweat-1 { left: 108px; top: 38px; animation: rwc-burst-1 1.8s infinite; }
+.rwc-sweat-2 { left: 124px; top: 32px; animation: rwc-burst-2 2.1s .4s infinite; }
+.rwc-sweat-3 { left: 114px; top: 56px; animation: rwc-burst-3 1.9s .8s infinite; }
+.rwc-sweat-4 { left: 128px; top: 64px; animation: rwc-burst-4 2.2s 1.2s infinite; }
 
 .rwc-resize {
   position: absolute;
@@ -226,19 +226,39 @@
   to { transform: rotate(-1.5deg) translateX(2px); }
 }
 
-/* 玉が生まれてしばらく留まり(軽く上下に呼吸)、終盤で右下へ勢いよく弾け飛んで消える。 */
-@keyframes rwc-flick-a {
-  0% { opacity: 0; transform: translate(0, -2px) scale(.6) rotate(0deg); }
-  12% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
-  55% { opacity: 1; transform: translate(-1px, 2px) scale(1.03) rotate(-3deg); }
-  72% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translate(22px, 34px) scale(.4) rotate(35deg); }
+/* 玉が生まれて中心付近でしばらく震え、終盤で放射状(4方向)へ勢いよく弾け飛んで消える。 */
+@keyframes rwc-burst-1 {
+  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
+  15% { opacity: 1; transform: translate(0, 0) scale(1); }
+  38% { opacity: 1; transform: translate(-2px, -1px) scale(1.05); }
+  50% { opacity: 1; transform: translate(2px, 1px) scale(1); }
+  65% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-30px, -22px) scale(.3); }
 }
 
-@keyframes rwc-flick-b {
-  0% { opacity: 0; transform: translate(0, -2px) scale(.55) rotate(0deg); }
-  12% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
-  55% { opacity: 1; transform: translate(1px, 2px) scale(1.04) rotate(3deg); }
-  72% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translate(-24px, 30px) scale(.4) rotate(-32deg); }
+@keyframes rwc-burst-2 {
+  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
+  15% { opacity: 1; transform: translate(0, 0) scale(1); }
+  38% { opacity: 1; transform: translate(2px, -1px) scale(1.05); }
+  50% { opacity: 1; transform: translate(-2px, 1px) scale(1); }
+  65% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(30px, -24px) scale(.3); }
+}
+
+@keyframes rwc-burst-3 {
+  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
+  15% { opacity: 1; transform: translate(0, 0) scale(1); }
+  38% { opacity: 1; transform: translate(-2px, 1px) scale(1.05); }
+  50% { opacity: 1; transform: translate(2px, -1px) scale(1); }
+  65% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-26px, 26px) scale(.3); }
+}
+
+@keyframes rwc-burst-4 {
+  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
+  15% { opacity: 1; transform: translate(0, 0) scale(1); }
+  38% { opacity: 1; transform: translate(2px, 1px) scale(1.05); }
+  50% { opacity: 1; transform: translate(-2px, -1px) scale(1); }
+  65% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(26px, 28px) scale(.3); }
 }
