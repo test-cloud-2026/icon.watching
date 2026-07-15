@@ -160,22 +160,24 @@
   display: none;
   position: absolute;
   z-index: 6;
-  width: 11px;
-  height: 16px;
-  border-radius: 70% 30% 65% 35%;
-  background: linear-gradient(145deg, #e5fbff, #54c7e9);
-  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .75);
+  width: 10px;
+  height: 14px;
+  border-radius: 60% 60% 40% 40% / 65% 65% 35% 35%;
+  background: linear-gradient(145deg, #eafcff, #57c8ea);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, .8);
   opacity: 0;
+  transform-origin: top center;
 }
 
 #rwc-widget.rwc-rush .rwc-sweat {
   display: block;
 }
 
-.rwc-sweat-1 { left: 30px; top: 39px; animation: rwc-sweat1 .85s infinite; }
-.rwc-sweat-2 { left: 62px; top: 15px; animation: rwc-sweat2 1.05s .15s infinite; }
-.rwc-sweat-3 { right: 84px; top: 50px; animation: rwc-sweat3 .75s .35s infinite; }
-.rwc-sweat-4 { left: 75px; top: 67px; animation: rwc-sweat4 1.1s .5s infinite; }
+/* 汗は重力でまっすぐ下にしたたるだけにし、上へ飛び散らないようにする。 */
+.rwc-sweat-1 { left: 28px; top: 36px; animation: rwc-drip-a 1.6s ease-in infinite; }
+.rwc-sweat-2 { left: 60px; top: 20px; animation: rwc-drip-b 1.9s .5s ease-in infinite; }
+.rwc-sweat-3 { right: 82px; top: 46px; animation: rwc-drip-a 1.7s .9s ease-in infinite; }
+.rwc-sweat-4 { left: 72px; top: 62px; animation: rwc-drip-b 2s 1.3s ease-in infinite; }
 
 .rwc-resize {
   position: absolute;
@@ -224,26 +226,17 @@
   to { transform: rotate(-1.5deg) translateX(2px); }
 }
 
-@keyframes rwc-sweat1 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.6); }
-  20% { opacity: 1; }
-  100% { opacity: 0; transform: translate(48px, -58px) rotate(25deg) scale(1.25); }
+/* 玉が生まれて少しふくらみ、重力でまっすぐ下にしたたって消える。回転や横移動はしない。 */
+@keyframes rwc-drip-a {
+  0% { opacity: 0; transform: translateY(-2px) scale(.6); }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  75% { opacity: 1; transform: translateY(16px) scale(1.05); }
+  100% { opacity: 0; transform: translateY(22px) scale(.92); }
 }
 
-@keyframes rwc-sweat2 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.5); }
-  18% { opacity: 1; }
-  100% { opacity: 0; transform: translate(15px, -84px) rotate(-24deg) scale(1.4); }
-}
-
-@keyframes rwc-sweat3 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.7); }
-  25% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-65px, -46px) rotate(-38deg) scale(1.25); }
-}
-
-@keyframes rwc-sweat4 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.55); }
-  25% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-36px, -92px) rotate(15deg) scale(1.35); }
+@keyframes rwc-drip-b {
+  0% { opacity: 0; transform: translateY(-2px) scale(.55); }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  75% { opacity: 1; transform: translateY(20px) scale(1.08); }
+  100% { opacity: 0; transform: translateY(28px) scale(.92); }
 }

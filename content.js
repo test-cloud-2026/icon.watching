@@ -196,6 +196,10 @@
       for (let i = 0; i < amount; i++) burstTimes.push(now);
     }
     while (burstTimes.length && burstTimes[0] < now - 2200) burstTimes.shift();
+    // クラスが付いたままだとCSSアニメーションは再始動しない。連続で届いたときも
+    // 毎回揺れて見えるよう、一度外してリフローしてから付け直す。
+    widget.classList.remove("rwc-spotting");
+    void mascot.offsetWidth;
     widget.classList.add("rwc-spotting");
     if (burstTimes.length >= 4) widget.classList.add("rwc-rush");
     clearTimeout(calmDownTimer);
