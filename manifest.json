@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Meet リアクション野鳥の会",
+  "version": "1.0.0",
+  "description": "Google Meetに流れたリアクションを種類別に数える、講師向けの小さなカウンターです。",
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/birdwatcher.png", "assets/birdwatcher-busy.png"],
+      "matches": ["https://meet.google.com/*"]
+    }
+  ]
+}
