@@ -173,11 +173,11 @@
   display: block;
 }
 
-/* 汗は重力でまっすぐ下にしたたるだけにし、上へ飛び散らないようにする。 */
-.rwc-sweat-1 { left: 28px; top: 36px; animation: rwc-drip-a 1.6s ease-in infinite; }
-.rwc-sweat-2 { left: 60px; top: 20px; animation: rwc-drip-b 1.9s .5s ease-in infinite; }
-.rwc-sweat-3 { right: 82px; top: 46px; animation: rwc-drip-a 1.7s .9s ease-in infinite; }
-.rwc-sweat-4 { left: 72px; top: 62px; animation: rwc-drip-b 2s 1.3s ease-in infinite; }
+/* マンガ・アニメの汗マーク定番の動き: できてしばらく留まり、最後に斜め下へ弾け飛んで消える。 */
+.rwc-sweat-1 { left: 28px; top: 36px; animation: rwc-flick-a 1.8s infinite; }
+.rwc-sweat-2 { left: 60px; top: 20px; animation: rwc-flick-b 2.1s .5s infinite; }
+.rwc-sweat-3 { right: 82px; top: 46px; animation: rwc-flick-a 1.9s .9s infinite; }
+.rwc-sweat-4 { left: 72px; top: 62px; animation: rwc-flick-b 2.2s 1.3s infinite; }
 
 .rwc-resize {
   position: absolute;
@@ -226,17 +226,19 @@
   to { transform: rotate(-1.5deg) translateX(2px); }
 }
 
-/* 玉が生まれて少しふくらみ、重力でまっすぐ下にしたたって消える。回転や横移動はしない。 */
-@keyframes rwc-drip-a {
-  0% { opacity: 0; transform: translateY(-2px) scale(.6); }
-  15% { opacity: 1; transform: translateY(0) scale(1); }
-  75% { opacity: 1; transform: translateY(16px) scale(1.05); }
-  100% { opacity: 0; transform: translateY(22px) scale(.92); }
+/* 玉が生まれてしばらく留まり(軽く上下に呼吸)、終盤で右下へ勢いよく弾け飛んで消える。 */
+@keyframes rwc-flick-a {
+  0% { opacity: 0; transform: translate(0, -2px) scale(.6) rotate(0deg); }
+  12% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  55% { opacity: 1; transform: translate(-1px, 2px) scale(1.03) rotate(-3deg); }
+  72% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translate(22px, 34px) scale(.4) rotate(35deg); }
 }
 
-@keyframes rwc-drip-b {
-  0% { opacity: 0; transform: translateY(-2px) scale(.55); }
-  15% { opacity: 1; transform: translateY(0) scale(1); }
-  75% { opacity: 1; transform: translateY(20px) scale(1.08); }
-  100% { opacity: 0; transform: translateY(28px) scale(.92); }
+@keyframes rwc-flick-b {
+  0% { opacity: 0; transform: translate(0, -2px) scale(.55) rotate(0deg); }
+  12% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  55% { opacity: 1; transform: translate(1px, 2px) scale(1.04) rotate(3deg); }
+  72% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translate(-24px, 30px) scale(.4) rotate(-32deg); }
 }
