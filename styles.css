@@ -173,13 +173,14 @@
   display: block;
 }
 
-/* 頭の右横の空きスペース(イラストに重ならない位置)にまとめて配置する。
-   参考動画と同じく、普段は雫が1つ静かに留まり、時々複数の破片にパシャッと
-   分裂してすぐ元の1粒に戻る動きを繰り返す。 */
-.rwc-sweat-1 { left: 138px; top: 18px; animation: rwc-rest 1.7s infinite; }
-.rwc-sweat-2 { left: 154px; top: 12px; animation: rwc-splash-a 1.7s infinite; }
-.rwc-sweat-3 { left: 150px; top: 32px; animation: rwc-splash-b 1.7s infinite; }
-.rwc-sweat-4 { left: 132px; top: 28px; animation: rwc-splash-c 1.7s infinite; }
+/* 頭の右横の空きスペース(イラストにも、右上の開閉ボタン(42x42)にも
+   重ならない位置)にまとめて配置する。参考動画と同じく、普段は雫が1つ
+   静かに留まり、時々複数の破片にパシャッと分裂してすぐ元の1粒に戻る
+   動きを繰り返す。 */
+.rwc-sweat-1 { left: 146px; top: 34px; animation: rwc-rest 1.7s infinite; }
+.rwc-sweat-2 { left: 160px; top: 28px; animation: rwc-splash-a 1.7s infinite; }
+.rwc-sweat-3 { left: 156px; top: 48px; animation: rwc-splash-b 1.7s infinite; }
+.rwc-sweat-4 { left: 138px; top: 44px; animation: rwc-splash-c 1.7s infinite; }
 
 .rwc-resize {
   position: absolute;
