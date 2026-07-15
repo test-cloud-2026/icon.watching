@@ -160,8 +160,8 @@
   display: none;
   position: absolute;
   z-index: 6;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   /* 角を1つだけ尖らせた「しずく」形(絵文字の💧に近いぷっくりした形)。 */
   border-radius: 50% 50% 50% 4%;
   background: linear-gradient(135deg, #d9f3ff, #4bb0e6);
@@ -173,11 +173,13 @@
   display: block;
 }
 
-/* 後頭部〜背中あたりの1点から、震えるような手描き線のように放射状へ弾け飛ぶ動き。 */
-.rwc-sweat-1 { left: 108px; top: 38px; animation: rwc-burst-1 1.8s infinite; }
-.rwc-sweat-2 { left: 124px; top: 32px; animation: rwc-burst-2 2.1s .4s infinite; }
-.rwc-sweat-3 { left: 114px; top: 56px; animation: rwc-burst-3 1.9s .8s infinite; }
-.rwc-sweat-4 { left: 128px; top: 64px; animation: rwc-burst-4 2.2s 1.2s infinite; }
+/* 頭の右横の空きスペース(イラストに重ならない位置)にまとめて配置する。
+   参考動画と同じく、普段は雫が1つ静かに留まり、時々複数の破片にパシャッと
+   分裂してすぐ元の1粒に戻る動きを繰り返す。 */
+.rwc-sweat-1 { left: 138px; top: 18px; animation: rwc-rest 1.7s infinite; }
+.rwc-sweat-2 { left: 154px; top: 12px; animation: rwc-splash-a 1.7s infinite; }
+.rwc-sweat-3 { left: 150px; top: 32px; animation: rwc-splash-b 1.7s infinite; }
+.rwc-sweat-4 { left: 132px; top: 28px; animation: rwc-splash-c 1.7s infinite; }
 
 .rwc-resize {
   position: absolute;
@@ -226,39 +228,32 @@
   to { transform: rotate(-1.5deg) translateX(2px); }
 }
 
-/* 玉が生まれて中心付近でしばらく震え、終盤で放射状(4方向)へ勢いよく弾け飛んで消える。 */
-@keyframes rwc-burst-1 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
-  15% { opacity: 1; transform: translate(0, 0) scale(1); }
-  38% { opacity: 1; transform: translate(-2px, -1px) scale(1.05); }
-  50% { opacity: 1; transform: translate(2px, 1px) scale(1); }
-  65% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(-30px, -22px) scale(.3); }
+/* 参考動画と同じ構成: 主粒(rwc-rest)はほぼ静止したまま常に見えており、
+   その周りの破片(rwc-splash-*)が短い間だけパシャッと現れて、
+   すぐにまた見えなくなる。全体はゆっくり呼吸するだけで、弾け飛んで
+   消えたままにはならない。 */
+@keyframes rwc-rest {
+  0%, 100% { opacity: 1; transform: translate(0, 0) scale(1); }
+  40% { opacity: 1; transform: translate(0, 0) scale(1); }
+  48% { opacity: 1; transform: translate(-1px, 1px) scale(.94); }
+  58% { opacity: 1; transform: translate(1px, -1px) scale(1.04); }
+  66% { opacity: 1; transform: translate(0, 0) scale(1); }
 }
 
-@keyframes rwc-burst-2 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
-  15% { opacity: 1; transform: translate(0, 0) scale(1); }
-  38% { opacity: 1; transform: translate(2px, -1px) scale(1.05); }
-  50% { opacity: 1; transform: translate(-2px, 1px) scale(1); }
-  65% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(30px, -24px) scale(.3); }
+@keyframes rwc-splash-a {
+  0%, 38%, 68%, 100% { opacity: 0; transform: translate(0, 0) scale(.2); }
+  46% { opacity: 1; transform: translate(5px, -4px) scale(.85); }
+  56% { opacity: 1; transform: translate(7px, -6px) scale(.7); }
 }
 
-@keyframes rwc-burst-3 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
-  15% { opacity: 1; transform: translate(0, 0) scale(1); }
-  38% { opacity: 1; transform: translate(-2px, 1px) scale(1.05); }
-  50% { opacity: 1; transform: translate(2px, -1px) scale(1); }
-  65% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(-26px, 26px) scale(.3); }
+@keyframes rwc-splash-b {
+  0%, 40%, 70%, 100% { opacity: 0; transform: translate(0, 0) scale(.2); }
+  48% { opacity: 1; transform: translate(6px, 4px) scale(.8); }
+  58% { opacity: 1; transform: translate(9px, 6px) scale(.65); }
 }
 
-@keyframes rwc-burst-4 {
-  0% { opacity: 0; transform: translate(0, 0) scale(.3); }
-  15% { opacity: 1; transform: translate(0, 0) scale(1); }
-  38% { opacity: 1; transform: translate(2px, 1px) scale(1.05); }
-  50% { opacity: 1; transform: translate(-2px, -1px) scale(1); }
-  65% { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(26px, 28px) scale(.3); }
+@keyframes rwc-splash-c {
+  0%, 39%, 69%, 100% { opacity: 0; transform: translate(0, 0) scale(.2); }
+  47% { opacity: 1; transform: translate(-6px, 3px) scale(.75); }
+  57% { opacity: 1; transform: translate(-9px, 5px) scale(.6); }
 }
